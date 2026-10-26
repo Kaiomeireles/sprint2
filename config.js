@@ -9,5 +9,5 @@ window.LEVA_EU = {
   entries: { nome: "", whatsapp: "", bairro: "", carro: "", variante: "", origem: "" },
 
   // Opcional: ID do Google Analytics 4. Ex.: "G-XXXXXXXXXX"
-  ga4: ""
+  ga4: "G-YE8MKQ2G2C"
 };
