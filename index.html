@@ -1,141 +1,190 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Leva Eu</title>
-<meta name="description" content="Um motorista verificado dirige o seu carro até a sua casa. Entre na lista de espera.">
-<style>
-  :root { --ink:#111; --muted:#555; --line:#e3e3e3; --bg:#fff; }
-  * { box-sizing:border-box; }
-  body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; }
-  main { max-width:560px; margin:0 auto; padding:24px 20px 64px; }
-  .brand { font-weight:700; letter-spacing:.02em; margin-bottom:48px; }
-  h1 { font-size:34px; line-height:1.15; margin:0 0 16px; }
-  p.lead { color:var(--muted); margin:0 0 28px; }
-  h2 { font-size:20px; margin:48px 0 16px; }
-  .btn { display:block; width:100%; padding:16px; border:0; border-radius:8px; background:#000; color:#fff; font-weight:600; font-size:17px; font-family:inherit; text-align:center; text-decoration:none; cursor:pointer; }
-  .btn:hover { background:#222; }
-  .btn.alt { background:#fff; color:#000; border:2px solid #000; margin-top:12px; }
-  .btn.alt:hover { background:#f4f4f4; }
-  ol { padding-left:20px; margin:0; }
-  li { margin-bottom:10px; }
-  .price { border:1px solid var(--line); border-radius:8px; padding:16px; }
-  .price strong { font-size:28px; }
-  form { display:grid; gap:14px; }
-  label { display:grid; gap:6px; font-weight:600; font-size:15px; }
-  input[type=text], input[type=tel] { padding:14px; border:1px solid #bbb; border-radius:8px; font:inherit; }
-  input:focus { outline:2px solid #000; border-color:#000; }
-  .check { display:flex; gap:10px; align-items:flex-start; font-weight:400; font-size:14px; color:var(--muted); }
-  .check input { margin-top:4px; width:18px; height:18px; accent-color:#000; }
-  .msg { padding:14px; border:1px solid #000; border-radius:8px; display:none; }
-  footer { margin-top:56px; color:var(--muted); font-size:13px; }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Leva Eu — um botão leva você e o seu carro para casa</title>
+  <meta name="description" content="Você bebeu. Um motorista verificado dirige o seu próprio carro até a sua casa. Entre na lista de espera.">
+  <meta name="theme-color" content="#0d0d0f">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff6a2b'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%230d0d0f'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<main>
-  <div class="brand">LEVA EU</div>
 
-  <h1 id="headline">Um botão leva você e o seu carro para casa.</h1>
-  <p class="lead">Você bebeu. Um motorista verificado dirige o seu próprio carro até a sua casa. Sem deixar o carro para trás e sem pagar duas corridas.</p>
-  <a class="btn" href="#lista" data-evento="cta_topo">Entrar na lista de espera</a>
+<header class="topbar">
+  <div class="wrap topbar__in">
+    <a class="logo" href="#topo" aria-label="Leva Eu">LEVA EU</a>
+    <nav class="nav" aria-label="Seções">
+      <a href="#como">Como funciona</a>
+      <a href="#seguranca">Segurança</a>
+      <a href="#preco">Preço</a>
+      <a href="#faq">Dúvidas</a>
+    </nav>
+    <a class="btn btn--sm" href="#lista" data-evento="cta_topo">Entrar na lista</a>
+  </div>
+</header>
 
-  <h2>Como funciona</h2>
-  <ol>
-    <li>Você se cadastra uma vez, sóbrio: endereço, carro e pagamento.</li>
-    <li>Na hora de ir embora, pede um motorista.</li>
-    <li>O motorista chega, dirige o seu carro e leva você em casa.</li>
-  </ol>
+<main id="topo">
 
-  <h2>Quanto custa</h2>
-  <div class="price"><strong>R$ 69</strong> por corrida. Tarifa única, valor previsto para o piloto.<br>
-  <span style="color:var(--muted)">Sem segunda corrida e sem diária de estacionamento.</span></div>
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div class="hero__text reveal">
+      <span class="pill">Piloto · Itaim, Pinheiros, Jardins, Moema, Vila Olímpia e Vila Madalena</span>
+      <h1 id="headline">Um botão leva você e o seu carro para casa.</h1>
+      <p class="lead">Você bebeu. Um motorista verificado dirige o seu próprio carro até a sua casa. Sem deixar o carro para trás e sem pagar duas corridas.</p>
+      <div class="hero__cta">
+        <a class="btn btn--lg" href="#lista" data-evento="cta_hero">Entrar na lista de espera</a>
+        <a class="btn btn--ghost btn--lg" href="#como">Ver como funciona</a>
+      </div>
+      <p class="hint">Quinta a sábado, das 20h às 4h · R$ 69 por corrida</p>
+    </div>
 
-  <h2>Onde e quando</h2>
-  <p style="margin:0">Itaim, Pinheiros, Jardins, Moema, Vila Olímpia e Vila Madalena. Quinta a sábado, das 20h às 4h.</p>
+    <div class="phone reveal" aria-hidden="true">
+      <div class="phone__screen">
+        <div class="phone__logo">LEVA EU</div>
+        <div class="phone__btn"><span>ME LEVA<br>PRA CASA</span></div>
+        <div class="phone__price">R$ 69</div>
+        <div class="phone__sub">por viagem dentro do polígono</div>
+      </div>
+    </div>
+  </section>
 
-  <h2 id="lista">Entrar na lista de espera</h2>
-  <form id="form" novalidate>
-    <label>Nome <input type="text" name="nome" autocomplete="name" required></label>
-    <label>WhatsApp <input type="tel" name="whatsapp" autocomplete="tel" placeholder="(11) 90000-0000" required></label>
-    <label>Bairro onde você mais sai <input type="text" name="bairro" required></label>
-    <label>Modelo do seu carro <input type="text" name="carro" required></label>
-    <label class="check"><input type="checkbox" name="lgpd" required>
-      <span>Autorizo o uso dos meus dados apenas para contato sobre o Leva Eu. Posso pedir a exclusão a qualquer momento.</span></label>
-    <button class="btn" type="submit">Quero entrar na lista</button>
-    <div class="msg" id="ok" role="status"></div>
-  </form>
-  <a class="btn alt" id="zap" href="#" data-evento="cta_whatsapp">Falar no WhatsApp</a>
+  <!-- COMO FUNCIONA -->
+  <section class="section wrap" id="como">
+    <h2 class="reveal">Como funciona</h2>
+    <p class="section__lead reveal">A decisão acontece quando você está sóbrio. Na hora de voltar, existe um botão e mais nada.</p>
+    <div class="grid3">
+      <article class="card reveal">
+        <span class="num">1</span>
+        <h3>Cadastre uma vez</h3>
+        <p>Com você sóbrio: onde mora, qual é o seu carro e como paga.</p>
+      </article>
+      <article class="card reveal">
+        <span class="num">2</span>
+        <h3>Aperte o botão</h3>
+        <p>Na hora de ir embora, um toque. Sem digitar, sem escolher nada.</p>
+      </article>
+      <article class="card reveal">
+        <span class="num">3</span>
+        <h3>Chegue em casa com o carro</h3>
+        <p>O motorista dirige o seu carro até a sua garagem. Você só volta.</p>
+      </article>
+    </div>
+  </section>
 
-  <footer>Leva Eu · projeto acadêmico em fase de teste · não há corridas abertas ao público ainda.</footer>
+  <!-- SEGURANÇA -->
+  <section class="section wrap" id="seguranca">
+    <h2 class="reveal">Entregar a chave exige confiança</h2>
+    <p class="section__lead reveal">É o que vamos construir primeiro no piloto.</p>
+    <div class="grid3">
+      <article class="card reveal">
+        <h3>Motorista verificado</h3>
+        <p>Conferência de documentos e CNH antes de qualquer corrida.</p>
+      </article>
+      <article class="card reveal">
+        <h3>CONFERE com fotos</h3>
+        <p>Fotos do carro na partida e na chegada, registradas por corrida.</p>
+      </article>
+      <article class="card reveal">
+        <h3>Corrida acompanhada</h3>
+        <p>Você e quem espera em casa sabem onde o carro está durante a viagem.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- PREÇO -->
+  <section class="section wrap" id="preco">
+    <div class="price reveal">
+      <div>
+        <h2>Uma tarifa só</h2>
+        <p class="section__lead">Deixar o carro no bar significa a corrida de hoje, a de amanhã e o estacionamento. Aqui é uma viagem.</p>
+      </div>
+      <div class="price__box">
+        <div class="price__value">R$ 69</div>
+        <div class="price__note">por corrida · valor previsto para o piloto</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTA -->
+  <section class="section wrap" id="lista">
+    <div class="signup reveal">
+      <div class="signup__text">
+        <h2>Entre na lista de espera</h2>
+        <p class="section__lead">Avisamos pelo WhatsApp quando o piloto abrir na sua região. Leva um minuto.</p>
+      </div>
+
+      <form id="form" class="form" novalidate>
+        <label class="field">
+          <span>Nome</span>
+          <input type="text" name="nome" autocomplete="name" required>
+          <small class="error" data-for="nome"></small>
+        </label>
+        <label class="field">
+          <span>WhatsApp</span>
+          <input type="tel" name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" required>
+          <small class="error" data-for="whatsapp"></small>
+        </label>
+        <label class="field">
+          <span>Bairro onde você mais sai</span>
+          <input type="text" name="bairro" required>
+          <small class="error" data-for="bairro"></small>
+        </label>
+        <label class="field">
+          <span>Modelo do seu carro</span>
+          <input type="text" name="carro" placeholder="Ex.: Honda Civic 2018" required>
+          <small class="error" data-for="carro"></small>
+        </label>
+        <label class="check">
+          <input type="checkbox" name="lgpd" required>
+          <span>Autorizo o uso dos meus dados apenas para contato sobre o Leva Eu. Posso pedir a exclusão quando quiser.</span>
+        </label>
+        <small class="error" data-for="lgpd"></small>
+
+        <button class="btn btn--lg btn--block" type="submit">Quero entrar na lista</button>
+        <a class="btn btn--ghost btn--block" id="zap" href="#" data-evento="cta_whatsapp">Prefiro falar no WhatsApp</a>
+        <div class="status" id="status" role="status" aria-live="polite" hidden></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section wrap" id="faq">
+    <h2 class="reveal">Dúvidas</h2>
+    <div class="faq reveal">
+      <details>
+        <summary>Já posso pedir uma corrida?</summary>
+        <p>Ainda não. Estamos em fase de teste e abrindo vagas aos poucos. Quem entra na lista é chamado primeiro.</p>
+      </details>
+      <details>
+        <summary>Funciona fora do polígono?</summary>
+        <p>No piloto, origem e destino ficam dentro de Itaim, Pinheiros, Jardins, Moema, Vila Olímpia e Vila Madalena.</p>
+      </details>
+      <details>
+        <summary>Quando funciona?</summary>
+        <p>De quinta a sábado, das 20h às 4h.</p>
+      </details>
+      <details>
+        <summary>O que acontece com os meus dados?</summary>
+        <p>Usamos nome, WhatsApp, bairro e carro só para falar com você sobre o piloto. Você pode pedir a exclusão a qualquer momento.</p>
+      </details>
+    </div>
+  </section>
 </main>
 
+<footer class="footer">
+  <div class="wrap">
+    <div class="logo">LEVA EU</div>
+    <p>Projeto acadêmico em fase de teste. Ainda não há corridas abertas ao público.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
 <script src="config.js"></script>
-<script>
-(function () {
-  var C = window.LEVA_EU || {};
-  var params = new URLSearchParams(location.search);
-
-  // Variante de posicionamento (A, B, C): ?v=A força; senão sorteia e lembra.
-  var TEXTOS = {
-    A: "Você bebeu. Não dirija. E não deixe seu carro para trás.",
-    B: "Duas corridas e uma diária de estacionamento. Ou R$ 69.",
-    C: "Um botão. Você em casa. Seu carro também."
-  };
-  var v = (params.get("v") || "").toUpperCase();
-  try { if (!TEXTOS[v]) v = localStorage.getItem("leva_v"); } catch (e) {}
-  if (!TEXTOS[v]) v = ["A", "B", "C"][Math.floor(Math.random() * 3)];
-  try { localStorage.setItem("leva_v", v); } catch (e) {}
-  document.getElementById("headline").textContent = TEXTOS[v];
-
-  var origem = [params.get("utm_source"), params.get("utm_medium"), params.get("utm_campaign")].filter(Boolean).join("/") || "direto";
-
-  // Analytics (opcional)
-  if (C.ga4) {
-    var s = document.createElement("script"); s.async = true;
-    s.src = "https://www.googletagmanager.com/gtag/js?id=" + C.ga4; document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () { dataLayer.push(arguments); };
-    gtag("js", new Date()); gtag("config", C.ga4);
-  }
-  function evento(nome) { if (window.gtag) gtag("event", nome, { variante: v, origem: origem }); }
-  document.querySelectorAll("[data-evento]").forEach(function (el) {
-    el.addEventListener("click", function () { evento(el.getAttribute("data-evento")); });
-  });
-
-  function zapLink(texto) {
-    return "https://wa.me/" + (C.whatsapp || "") + "?text=" + encodeURIComponent(texto);
-  }
-  document.getElementById("zap").href = zapLink("Oi! Vi o Leva Eu e quero saber mais. (variante " + v + ")");
-
-  document.getElementById("form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    var f = e.target, d = {};
-    ["nome", "whatsapp", "bairro", "carro"].forEach(function (k) { d[k] = f[k].value.trim(); });
-    var ok = document.getElementById("ok");
-    if (!d.nome || !d.whatsapp || !d.bairro || !d.carro || !f.lgpd.checked) {
-      ok.style.display = "block"; ok.textContent = "Preencha todos os campos e aceite o uso dos dados."; return;
-    }
-    evento("cadastro_lista");
-
-    if (C.formAction) {
-      var body = new URLSearchParams(), E = C.entries || {};
-      if (E.nome) body.append(E.nome, d.nome);
-      if (E.whatsapp) body.append(E.whatsapp, d.whatsapp);
-      if (E.bairro) body.append(E.bairro, d.bairro);
-      if (E.carro) body.append(E.carro, d.carro);
-      if (E.variante) body.append(E.variante, v);
-      if (E.origem) body.append(E.origem, origem);
-      fetch(C.formAction, { method: "POST", mode: "no-cors", body: body }).catch(function () {});
-      ok.style.display = "block"; ok.textContent = "Pronto, você está na lista. Entraremos em contato pelo WhatsApp.";
-      f.reset(); return;
-    }
-    // Sem formulário configurado: manda o cadastro por WhatsApp.
-    var texto = "Quero entrar na lista do Leva Eu.\nNome: " + d.nome + "\nWhatsApp: " + d.whatsapp +
-      "\nBairro: " + d.bairro + "\nCarro: " + d.carro + "\n(variante " + v + ", origem " + origem + ")";
-    window.location.href = zapLink(texto);
-  });
-})();
-</script>
+<script src="js/app.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 # Leva Eu — MVP 0 (landing + lista de espera)
 
-Página única, sem backend. Serve como smoke test (CP3) e porta de entrada do MVP concierge (Sprint 2).
+Página única, sem backend. Arquivos: `index.html` (conteúdo), `css/style.css` (visual), `js/app.js` (formulário, teste A/B/C, analytics) e `config.js` (suas configurações). Serve como smoke test (CP3) e porta de entrada do MVP concierge (Sprint 2).
 
 ## Publicar (GitHub Pages)
 1. No GitHub: Settings → Pages → Source: `main` / root.
