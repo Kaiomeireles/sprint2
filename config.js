@@ -6,7 +6,7 @@ window.LEVA_EU = {
   // Opcional: Google Forms que guarda a lista de espera na planilha.
   // formAction = URL terminada em /formResponse; entries = ids dos campos (entry.123...)
   formAction: "",
-  entries: { nome: "", whatsapp: "5511991304597", bairro: "", carro: "", variante: "", origem: "" },
+  entries: { nome: "", whatsapp: "", bairro: "", carro: "", variante: "", origem: "" },
 
   // Opcional: ID do Google Analytics 4. Ex.: "G-XXXXXXXXXX"
   ga4: "G-YE8MKQ2G2C"
