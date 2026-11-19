@@ -41,7 +41,7 @@ jobs:
           mkdir -p dist
           cp -r app.js server.js package.json package-lock.json index.html config.js css js docs node_modules dist/
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: pacote
           path: dist
