@@ -1,0 +1,19 @@
+{
+  "name": "leva-eu",
+  "version": "0.2.0",
+  "description": "Leva Eu: landing page e lista de espera, servida em Azure App Service",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test \"test/*.test.js\""
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "applicationinsights": "^3.17.0",
+    "express": "^4.22.3",
+    "helmet": "^7.2.0"
+  }
+}

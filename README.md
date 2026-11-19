@@ -18,7 +18,29 @@ Motorista sob demanda que dirige o *seu próprio carro* até a sua casa depois q
 
 ---
 
+## Ficha Técnica do MVP
+
+> Responde às seis perguntas do briefing CitizenTech.
+
+| Pergunta | Resposta |
+|---|---|
+| **1. Quem é o cidadão beneficiado?** | Adultos de 25 a 45 anos com carro próprio que saem para beber no polígono Itaim · Pinheiros · Jardins · Moema · Vila Olímpia · Vila Madalena. Do lado da oferta, desempregados com CNH e sem veículo, que ganham renda noturna como motoristas. |
+| **2. Qual problema será resolvido?** | Quem vai de carro para beber não consegue voltar sem abandonar o carro, e acaba dirigindo alcoolizado ou pagando duas corridas. |
+| **3. Como a solução funcionará?** | Um botão chama um motorista verificado, que dirige o carro do próprio cliente até a casa dele. Cadastro feito com a pessoa sóbria; no uso, existe só um botão. Nesta fase, o despacho é manual (concierge). |
+| **4. Quais tecnologias serão empregadas?** | Node.js + Express no **Azure App Service**, HTML/CSS/JS, **GitHub Actions** (CI/CD), **Application Insights** (monitoramento), Google Forms/Sheets e GA4 (lista de espera e métricas). Modelos de IA: nenhum nesta fase. |
+| **5. Quem participará do ecossistema?** | Clientes, motoristas verificados, bares e casas noturnas (canal), seguradoras (cobertura de responsabilidade civil) e o poder público (fiscalização da Lei Seca). |
+| **6. Como o impacto será medido e ampliado?** | Corridas por noite, minutos até o motorista chegar, recompra em 30 dias, ganho por hora do motorista e sinistros por mil corridas. Expansão para novos polígonos e contratos B2B no 2º período. |
+
+| Item | Valor |
+|---|---|
+| **URL do MVP** | https://SEU-APP.azurewebsites.net *(trocar pela URL real do App Service)* |
+| **Repositório** | https://github.com/Kaiomeireles/sprint2 |
+| **ODS conectados** | ODS 3 (meta 3.6: reduzir mortes e lesões no trânsito), ODS 8 (trabalho decente e renda) e ODS 11 (cidades seguras) |
+
 ## Sumário
+
+- [Ficha Técnica do MVP](#ficha-técnica-do-mvp)
+- [Produção: Azure, CI/CD, segurança e monitoramento](#produção-azure-cicd-segurança-e-monitoramento)
 
 - [O problema](#o-problema)
 - [A solução](#a-solução)
@@ -82,7 +104,40 @@ Este é o **MVP 0** da Sprint 2: uma landing page que funciona como *smoke test*
 
 Não há pagamento, despacho automático, app nem login nesta fase. Tudo isso é manual de propósito: faça o que não escala, automatize só o que provou valor.
 
-## Rodar localmente
+## Produção: Azure, CI/CD, segurança e monitoramento
+
+```text
+Cidadão ──HTTPS──▶ Azure App Service (Linux, Node 20)
+                       │  health check: /health
+                       ├──▶ Application Insights ──▶ Alertas por e-mail
+                       └──▶ Google Forms/Sheets e GA4 (lista de espera e métricas)
+
+Desenvolvedor ──push──▶ GitHub ──▶ GitHub Actions: testes → auditoria → deploy → teste de fumaça
+```
+
+| Pilar | O que o repositório configura |
+|---|---|
+| **Deploy** | URL pública no App Service com HTTPS obrigatório (HTTPS Only, TLS 1.2 mínimo, HSTS). Resource Group `rg-leva-eu`. |
+| **CI/CD** | `.github/workflows/azure-deploy.yml`: a cada commit na `main` roda os testes, a auditoria de dependências, faz o deploy e confere `/health`. Pull requests rodam só os testes. |
+| **Segurança** | Segredos fora do código (App Settings do Azure e Secrets do GitHub). Cabeçalhos de segurança (CSP, HSTS, X-Frame-Options) via Helmet. Servidor só publica arquivos da lista permitida. CodeQL e Dependabot ligados. FTP desligado. Acesso por papel (RBAC): equipe como *Contributor*, avaliador como *Reader*. |
+| **Monitoramento** | Application Insights ligado por variável de ambiente. Três alertas por e-mail: erros 5xx, lentidão (> 2 s) e falha no `/health`. |
+| **Custo** | Estimativa no PDF de entrega (App Service B1 + Application Insights). |
+
+### Como colocar no ar
+
+1. No Azure Cloud Shell, rode `infra/azure-setup.sh` (edite `APP` e `ALERT_EMAIL` antes). Ele cria tudo e imprime o perfil de publicação.
+2. No GitHub, em **Settings → Secrets and variables → Actions**, crie o secret `AZURE_WEBAPP_PUBLISH_PROFILE` (o XML impresso) e a variável `AZURE_WEBAPP_NAME` (o nome do app).
+3. Faça um commit na `main`. O workflow publica e a URL aparece no ambiente `production`.
+
+### Rodar localmente
+
+```bash
+npm ci
+npm test
+npm start          # http://localhost:8080  ·  health em /health
+```
+
+## Rodar a landing sem servidor
 
 Não precisa instalar nada. É HTML, CSS e JavaScript puros.
 
@@ -144,6 +199,10 @@ Eventos enviados ao GA4, sempre com os parâmetros `variante` e `origem`:
 ```text
 sprint2/
 ├── index.html        # conteúdo da página
+├── app.js / server.js# servidor Express (segurança, /health) e ponto de entrada
+├── test/             # testes automatizados
+├── infra/            # script de criação da infraestrutura no Azure
+├── .github/          # workflows de CI/CD e CodeQL, Dependabot
 ├── config.js         # suas configurações (WhatsApp, Forms, GA4)
 ├── css/
 │   └── style.css     # visual, no estilo do protótipo do Figma
